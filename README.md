@@ -21,9 +21,10 @@ The setup simulates a production scenario where the model is trained on historic
 
 ## Structure
 
+```
 project/
 ├── notebooks/      # exploration, cleaning validation, EDA, modeling
 ├── src/            # reusable code (data cleaning, feature engineering)
 ├── tests/          # scripts to validate functions and transformations
+```
 
-## Next Steps
