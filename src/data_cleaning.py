@@ -21,3 +21,10 @@ def clean_credit_history(credit_history: pd.Series):
 
     except:
         return np.nan
+
+
+def clean_type_of_loan(type_of_loan: pd.Series):
+    if pd.isna(type_of_loan):
+        return []
+
+    return [loan.strip() for loan in type_of_loan.replace("and", "").split(",")]

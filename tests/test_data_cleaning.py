@@ -1,5 +1,9 @@
 import pandas as pd
-from src.data_cleaning import cleaning_int_variables, clean_credit_history
+from src.data_cleaning import (
+    cleaning_int_variables,
+    clean_credit_history,
+    clean_type_of_loan,
+)
 import numpy as np
 
 
@@ -22,4 +26,13 @@ def test_clean_credit_age():
     result = clean_credit_history(data)
 
     expected = 3 + 9 / 12
+    assert result == expected
+
+
+def test_clean_type_of_loan():
+    data = "Auto Loan, Credit-Builder Loan, Personal Loan, and Home Equity Loan"
+
+    result = clean_type_of_loan(data)
+    expected = ["Auto Loan", "Credit-Builder Loan", "Personal Loan", "Home Equity Loan"]
+
     assert result == expected
