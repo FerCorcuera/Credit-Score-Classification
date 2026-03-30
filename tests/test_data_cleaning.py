@@ -3,6 +3,7 @@ from src.data_cleaning import (
     cleaning_int_variables,
     clean_credit_history,
     clean_type_of_loan,
+    fill_credit_age,
 )
 import numpy as np
 
@@ -36,3 +37,12 @@ def test_clean_type_of_loan():
     expected = ["Auto Loan", "Credit-Builder Loan", "Personal Loan", "Home Equity Loan"]
 
     assert result == expected
+
+
+def test_fill_credit_age():
+    data = pd.Series([12.5, np.nan, np.nan, 12.75])
+    result = fill_credit_age(data.copy())
+
+    expected = pd.Series([12.5, 12.5 + 1 / 12, 12.5 + 2 / 12, 12.75])
+
+    pd.testing.assert_series_equal(result, expected, rtol=1e-5)
