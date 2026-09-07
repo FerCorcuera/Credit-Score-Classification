@@ -28,3 +28,56 @@ project/
 ├── tests/          # scripts to validate functions and transformations
 ```
 
+## Experimental Backlog
+
+
+### Data Quality and Preprocessing effects on model
+
+- [] Compare missing value imputation vs row deletion
+- [] Measure the impact of removing observations with invalid or nonsensical data
+- [] COmpare different numerical imputation strategies
+- [] Analyze whether missingness itself contains predictive information
+- [] Test feature scaling and empirically verify its effect on tree-based models
+
+### Categorical features
+
+- [] One-hot enconding vs target encoding
+- [] native categorical handling vs manually encoded categorical features
+- [] Study the effect of high-cardinality categorical varialbes
+
+### Feature engineering
+
+- Feature selection experiments (test different framewors such as BORUTA, SHAP, boosted tree's elimination, etc)
+
+### Modeling
+
+- [] Boosted trees family (XGBOOST, LIGHTGBM, CATBOOST, RANDOMFORSEST, ETC)
+
+- [] New models such as tableFM, NGBoost, etc
+
+### Credit-Risk specific methods
+
+- [] Weight of Evidence (WoE)
+- [] Information Value
+- [] Evaluation metrics (KS, GIni, etc)
+- [] Probability calibration
+- [] Scorecard construction
+
+### Validation
+
+- [] Measure the effect of random split and temporal split on the results and metric (variance and bias)
+- [] Test feature stability and drift on simulated test data
+
+### Mlops / Engineering
+
+- [] Experiment tracking with MLFLOW, Wights and Bias or SKORE
+- [] Try different feature store libraries
+- [] Api deployment
+- [] Docker
+
+### Agentic ML
+
+- [] Test agent framework for automated data-quality checks
+- [] Agent assisted feature discovery
+- [] Automated experiment analysis
+- [] Test skore agent 
