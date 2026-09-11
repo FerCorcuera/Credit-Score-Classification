@@ -81,3 +81,7 @@ project/
 - [] Agent assisted feature discovery
 - [] Automated experiment analysis
 - [] Test skore agent 
+
+### Dev
+
+- Method to find correlations automathically (chi, pearson, biserial) corresponding to the case
