@@ -69,17 +69,3 @@ def evaluate_classification_model(
         return pd.DataFrame([report]), pd.DataFrame(report_2)
 
     return pd.DataFrame([report])
-
-
-y_test = pd.Series([1, 1, 1, 0, 0])
-
-y_pred = pd.Series([1, 0, 1, 0, 1])
-
-y_proba = pd.Series([0.9, 0.8, 0.7, 0.6, 0.5])
-
-test_df, xd = evaluate_classification_model(
-    y_pred, y_proba, y_test, "Test_model", threshold_analysis=True
-)
-
-print(test_df.to_string(index=False))
-print(xd.to_string(index=False))
