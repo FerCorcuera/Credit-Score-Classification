@@ -69,3 +69,44 @@ def evaluate_classification_model(
         return pd.DataFrame([report]), pd.DataFrame(report_2)
 
     return pd.DataFrame([report])
+
+
+def compare_classification_models(
+    models: dict,
+    X_train: pd.Series,
+    y_train: pd.Series,
+    X_test: pd.Series,
+    y_test: pd.Series,
+) -> pd.DataFrame:
+    result = []
+
+    for model in models.values():
+        model.fit(X_train, y_train)
+
+        y_pred = model.predict(X_test)
+        y_proba = model.predict_proba(X_test)[:, 1]
+
+        df_report = evaluate_classification_model(
+            y_pred, y_proba, y_test, model_name=model.__class__.__name__
+        )
+
+        result.append(df_report)
+
+    return pd.concat(result, ignore_index=True)
+
+
+def test_compare_classification_models(
+    models: dict,
+):
+    y_train = pd.Series([1, 0, 1, 1, 1, 0])
+    X_train = pd.DataFrame({"feature": [1, 2, 3, 4, 5, 6]})
+    y_test = pd.Series([1, 1, 0, 0])
+
+    X_test = pd.DataFrame({"feature": [1, 2, 3, 4]})
+
+    df_report = compare_classification_models(models, X_train, y_train, X_test, y_test)
+
+    print(df_report.to_string(index=False))
+
+
+test_compare_classification_models(models_to_test)

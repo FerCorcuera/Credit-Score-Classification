@@ -2,10 +2,13 @@ import pandas as pd
 import numpy as np
 
 from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
 
 from src.classification_model_comparison import (
     evaluate_classification_model,
+    compare_classification_models,
 )
 
 # 0. Declaring parameteres
@@ -29,7 +32,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 print(f"Shape of the train data: {X_train.shape}")
 print(f"Shape of the test data: {X_test.shape}")
 print(f"Shape of the train target data: {y_train.shape}")
-print(f"Shape of the test target data: {y_test.shape}")
+print(f"Shape of the test target data: {y_test.shape} \n")
 
 
 # train a single model
@@ -48,3 +51,23 @@ report, threshold_report = evaluate_classification_model(
 
 print(report.to_string(index=False))
 print(threshold_report.to_string(index=False))
+
+# train several classification models:
+
+models = {
+    "XGBClassifier": XGBClassifier(),
+    "LogisticRegression": LogisticRegression(),
+    "RandomForest": RandomForestClassifier(),
+}
+
+df_report = compare_classification_models(
+    models,
+    X_train,
+    y_train,
+    X_test,
+    y_test,
+)
+
+print(
+    f"\n Comparing clasification models > \n {df_report.head(10).to_string(index=False)}"
+)
