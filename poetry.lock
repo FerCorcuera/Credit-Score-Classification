@@ -4930,6 +4930,27 @@ maintenance = ["conda-lock (==3.0.1)"]
 tests = ["matplotlib (>=3.6.1)", "mypy (>=1.15)", "numpydoc (>=1.2.0)", "pandas (>=1.5.0)", "polars (>=0.20.30)", "pooch (>=1.8.0)", "pyamg (>=5.0.0)", "pyarrow (>=12.0.0)", "pytest (>=7.1.2)", "pytest-cov (>=2.9.0)", "ruff (>=0.11.7)"]
 
 [[package]]
+name = "scikit-plot"
+version = "0.3.7"
+description = "An intuitive library to add plotting functionality to scikit-learn objects."
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "scikit-plot-0.3.7.tar.gz", hash = "sha256:2c7948817fd2dc06879cfe3c1fdde56a8e71fa5ac626ffbe79f043650baa6242"},
+    {file = "scikit_plot-0.3.7-py3-none-any.whl", hash = "sha256:6b3d529800b32a899c54dc5761a93c63cbff482b1889a4afee57dd219f3ef0c3"},
+]
+
+[package.dependencies]
+joblib = ">=0.10"
+matplotlib = ">=1.4.0"
+scikit-learn = ">=0.18"
+scipy = ">=0.9"
+
+[package.extras]
+testing = ["pytest"]
+
+[[package]]
 name = "scipy"
 version = "1.17.1"
 description = "Fundamental algorithms for scientific computing in Python"
@@ -5841,4 +5862,4 @@ type = ["pytest-mypy (>=1.0.1) ; platform_python_implementation != \"PyPy\""]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.14"
-content-hash = "482420d95c1609e4480327312e596b41e3c70dd0109ab13bf90fb48f1daa3480"
+content-hash = "d00361e4809818391f624469fb05dc70b4f509fc57c54130cf899fe1e2987bd1"
